@@ -109,9 +109,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MottledApi\MottledApi.csproj">
+    <ProjectReference Include="..\MottledApi\5.MottledApi.csproj">
       <Project>{8BA7F932-2FE7-46B7-B776-2A6A5CF65BAE}</Project>
-      <Name>MottledApi</Name>
+      <Name>5.MottledApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
