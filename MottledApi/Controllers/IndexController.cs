@@ -12,7 +12,7 @@ namespace MottledApi.Controllers
     /// <summary>
     /// 首页处理
     /// </summary>
-    public class IndexController : ApiController
+    public class IndexController : BaseController
     {
         /// <summary>
         /// 获取用户
@@ -43,27 +43,27 @@ namespace MottledApi.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        //public async Task<IHttpActionResult> UpdateUser(RemoveLoginBindingModel model)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-        //    bool result;
-        //    result = await Task.Run(Update);
-        //    if (result)
-        //    {
-        //        return Ok();
-        //    }
-        //    return NotFound();
-        //}
+        public async Task<IHttpActionResult> UpdateUser(RemoveLoginBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            bool result;
+            result = await Task.Run(Update);
+            if (result)
+            {
+                return Ok();
+            }
+            return NotFound();
+        }
 
-        //private async Task<bool> Update()
-        //{
-        //    return await Task.Run(() =>
-        //    {
-        //        return false;                               //异步执行完成标记
-        //    });
-        //}
+        private async Task<bool> Update()
+        {
+            return await Task.Run(() =>
+            {
+                return false;                               //异步执行完成标记
+            });
+        }
     }
 }
