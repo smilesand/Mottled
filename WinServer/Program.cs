@@ -13,6 +13,7 @@ namespace WinServer
     {
         static void Main(string[] args)
         {
+            //这是一个实用的服务框架
             //安装TopShelfService.exe install
             //卸载TopShelfService.exe uninstall
             //FileInfo fi = new FileInfo(".//log4net.config");
