@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RabbitMQ.Client.Events;
+using System.Data;
 
 namespace _6.Command
 {
@@ -83,6 +84,37 @@ namespace _6.Command
             answerModel.OID = Guid.NewGuid();
             answerModel.answers = JsonConvert.SerializeObject(answers);
             return JsonConvert.SerializeObject(answerModel);
+        }
+
+
+
+        //这是一个递归算法
+        public static DataTable data = new DataTable();
+        shu shu2 = new shu();
+        public static shu GetShu(string OID, shu shu2)
+        {
+
+            DataRow[] dataRows = data.Select(" POID='" + OID + "'");
+            if (dataRows.Length == 0)
+            {
+                return shu2;
+            }
+            for (int i = 0; i < dataRows.Length; i++)
+            {
+                shu shu3 = new shu();
+                shu3.parentOID = dataRows[i]["parentOID"].ToString();
+                shu2.sonOID.Add(shu3);
+                //vs.Add(dataRows[i][0].ToString());
+                GetShu(dataRows[i]["sonOID"].ToString(), shu3);
+            }
+            return shu2;
+        }
+
+
+        public class shu
+        {
+            public string parentOID { get; set; }
+            public List<shu> sonOID { get; set; }
         }
     }
 }
